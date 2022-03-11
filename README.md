@@ -6,7 +6,7 @@ To freeze the program, press 'f'. You cannot unfreeze the program, that function
 # Run the Program
 To Run the Program: Open it in PyCharm(prefered IDE). You can use some other IDE too if you want, and click on Run button.
 
-# Improvement Needed Needed
+# Improvement Needed
 Anyone reading this, I require your help to add the unfreeze functionality in my program, I have tried various ways but none of them work. 
 It would be great if you could help me out.
 
