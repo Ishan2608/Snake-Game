@@ -1,7 +1,7 @@
 # Snake-Game
 The famous Snake Game built using Python Turtle.
 It is simple to play - Use arrow keys to move. You cannot turn in opposite direction just by pressing the opposite key.
-To freeze the program, press 'f'. You cannot unfreeze the program, that functionality is not added yet.
+To freeze the program, press 'f'. You cannot unfreeze(continue) the program, that functionality is not added yet.
 
 # Run the Program
 To Run the Program: Open it in PyCharm(prefered IDE). You can use some other IDE too if you want, and click on Run button.
