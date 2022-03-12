@@ -75,6 +75,10 @@ while game_is_on:
         food.refresh()
         snake.extend()
         scoreboard.increase_score()
+        # Update highscore as soon as score crosses over it and keep doing it.
+        if scoreboard.score > scoreboard.high_score:
+            scoreboard.high_score = scoreboard.score
+            scoreboard.update_score()
 
     # Detect collision with wall
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
