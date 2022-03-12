@@ -18,6 +18,6 @@ We record the all-time highscore in a text file.
 Anyone reading this, I require your help to make my snake look more snake like, i.e., to add an image of snake head for head and some scale images for the body.
 
 # Improvements Made
-1 - High score updates as soon as the score surpasses it. Earlier it updated only when the game restarted due to snake biting its own body or hitting the wall or game restart.
-2 - Added the feature to pause or resume the game with one keypress. Here just press the space bar to do so.
-3 - Now that snake head and body can be differentiated from one another due to difference in their colors, earlier both of them were white squares.
+1 - High score updates as soon as the score surpasses it. Earlier it updated only when the game restarted due to snake biting its own body or hitting the wall or game restart.\n
+2 - Added the feature to pause or resume the game with one keypress. Here just press the space bar to do so.\n
+3 - Now that snake head and body can be differentiated from one another due to difference in their colors, earlier both of them were white squares.\n
