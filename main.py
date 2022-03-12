@@ -29,6 +29,8 @@ screen.tracer(0)
 display = Display()
 display.show_creator_name("Ishan Rastogi")
 display.show_freeze_option()
+
+display2 = Display()
 # Show all-time high score and current score
 scoreboard = Scoreboard()
 # create our snake object
@@ -39,19 +41,20 @@ food = Food()
 
 # variable that will run our loop, in which the snake keeps moving forward
 game_is_on = True
-
-
-# function to freeze the game.
+is_game_paused = False
 
 
 def pause_game():
-    global game_is_on
-    game_is_on = False
+    global is_game_paused
 
+    # check if game is paused, then continue it
+    if is_game_paused:
+        is_game_paused = False
 
-# def continue_game():
-#     global game_is_on
-#     game_is_on = True
+    # check if game is on, pause it
+    elif not is_game_paused:
+        is_game_paused = True
+
 
 # make our screen be able to listen to key presses
 screen.listen()
@@ -60,44 +63,50 @@ screen.onkey(key="Up", fun=snake.up)
 screen.onkey(key="Down", fun=snake.down)
 screen.onkey(key="Left", fun=snake.left_turn)
 screen.onkey(key="Right", fun=snake.right_turn)
-screen.onkey(key="f", fun=pause_game)
-# screen.onkey(key="c", fun=continue_game)
+screen.onkey(key="space", fun=pause_game)
 
 while game_is_on:
-    # this is where we turn the animation on again.
-    screen.update()
-    # for a slower speed, increase the value in sleep function.
-    time.sleep(0.1)
-    snake.move()
 
-    # Detect collision with food
-    if snake.head.distance(food) < 15:
-        food.refresh()
-        snake.extend()
-        scoreboard.increase_score()
-        # Update highscore as soon as score crosses over it and keep doing it.
-        if scoreboard.score > scoreboard.high_score:
-            scoreboard.high_score = scoreboard.score
-            scoreboard.update_score()
+    if not is_game_paused:
+        # display status whether the game is paused or not, here it is not paused, game is on.
+        display2.show_status(is_game_paused)
+        # this is where we turn the animation on again.
+        screen.update()
+        # for a slower speed, increase the value in sleep function.
+        time.sleep(0.1)
+        snake.move()
 
-    # Detect collision with wall
-    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        scoreboard.reset_game()
-        snake.reset_snake()
+        # Detect collision with food
+        if snake.head.distance(food) < 15:
+            food.refresh()
+            snake.extend()
+            scoreboard.increase_score()
+            if scoreboard.score > scoreboard.high_score:
+                scoreboard.high_score = scoreboard.score
+                scoreboard.update_score()
 
-    # Detect collision with tail
-    # for segment in snake.segments:
-    #     if segment == snake.head:
-    #         pass
-    #     elif snake.head.distance(segment) < 10:
-    #         game_is_on = False
-    #         scoreboard.game_over()
-
-    # OR we can use String slicing
-    for segment in snake.segments[1:]:
-        if snake.head.distance(segment) < 10:
+        # Detect collision with wall
+        if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
             scoreboard.reset_game()
             snake.reset_snake()
+
+        # Detect collision with tail
+        # for segment in snake.segments:
+        #     if segment == snake.head:
+        #         pass
+        #     elif snake.head.distance(segment) < 10:
+        #         game_is_on = False
+        #         scoreboard.game_over()
+
+        # OR we can use String slicing
+        for segment in snake.segments[1:]:
+            if snake.head.distance(segment) < 10:
+                scoreboard.reset_game()
+                snake.reset_snake()
+
+    else:
+        # display status whether the game is paused or not, here it is paused
+        display2.show_status(is_game_paused)
 
 
 # screen should close only if we click on it or click on close button,

@@ -2,7 +2,7 @@ from turtle import Turtle
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_STEP = 20
-SNAKE_COLOR = 'white'
+SNAKE_COLOR = 'light green'
 SNAKE_SHAPE = 'square'
 UP = 90
 DOWN = 270
@@ -25,6 +25,8 @@ class Snake:
         new_turtle.color(SNAKE_COLOR)
         new_turtle.penup()
         new_turtle.goto(position)
+        if position[0] == 0 and position[1] == 0:
+            new_turtle.color("green")
         self.segments.append(new_turtle)
 
     def reset_snake(self):
@@ -38,7 +40,6 @@ class Snake:
         self.add_segment(self.segments[-1].position())
 
     def move(self):
-
         # make a member of list go to the position of previous member's position till we reach head(index 0)
         # only index 0 will move forward, others follow just be taking position of previous member's place.
         for cell_num in range(len(self.segments) - 1, 0, -1):
