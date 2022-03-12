@@ -28,5 +28,4 @@ Anyone reading this, I require your help to make my snake look more snake like, 
   <li>
     Now that snake head and body can be differentiated from one another due to difference in their colors, earlier both of them were white squares.  
   </li>
-Now that snake head and body can be differentiated from one another due to difference in their colors, earlier both of them were white squares.  
 </ol>
